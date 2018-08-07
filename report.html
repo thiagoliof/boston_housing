@@ -11850,7 +11850,7 @@ Tudo certo!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Importar as bibliotecas necessárias para este projeto</span>
@@ -11865,7 +11865,10 @@ Tudo certo!
 <span class="c1"># Executar o conjunto de dados de imóveis de Boston</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;housing.csv&#39;</span><span class="p">)</span>
 <span class="n">prices</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
+<span class="c1">#print(prices)</span>
+
 <span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1">#print(features)</span>
     
 <span class="c1"># Êxito</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O conjunto de dados de imóveis de Boston tem </span><span class="si">{}</span><span class="s2"> pontos com </span><span class="si">{}</span><span class="s2"> variáveis em cada.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
@@ -11886,20 +11889,6 @@ Tudo certo!
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>O conjunto de dados de imóveis de Boston tem 489 pontos com 4 variáveis em cada.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/tsilva/anaconda3/lib/python3.6/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-  &#34;This module will be removed in 0.20.&#34;, DeprecationWarning)
-/Users/tsilva/anaconda3/lib/python3.6/site-packages/sklearn/learning_curve.py:22: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the functions are moved. This module will be removed in 0.20
-  DeprecationWarning)
 </pre>
 </div>
 </div>
@@ -12476,9 +12465,7 @@ Quanto o modelo é treinado com 10 é bem provavel que ele sofra de overfiting, 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Resposta: </strong> 
-Os dados são quebrados em K subconjuntos
-Treinamos nossos modelos K vezes
-Tirar-se a média dos resultados para escolher o modelo</p>
+Esse método é usado para reciclar nossos dados, ou seja, assim não jogamos fora dados que podem ser úteis na hora de treinar nosso modelo. Essa técnica conhecida como validação cruzada k-fold é importante porque ela divide os dados e não quebra a regra de outro: Não utilizar dados de teste no treinamento do modelo. Essa técnica consiste em quebrar os dados em k pedaços, treinar o modelo k vezes onde cada vez é usado um pedaço diferente como conjunto de testes e o resto dos pontos como conjunto de treinamento. Assim que essas etapas forem completadas é tirado uma média dos resultados para obter o modelo final.</p>
 
 </div>
 </div>
