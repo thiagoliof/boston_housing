@@ -11929,7 +11929,6 @@ Tudo certo!
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Preço mínimo dos dados</span>
-
 <span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 
@@ -12439,9 +12438,21 @@ Quanto o modelo é treinado com 10 é bem provavel que ele sofra de overfiting, 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Resposta: </strong> 
-    Treina-se diferentes modelos modelos com hyperparameters diferentes,
-    Usa os dados para escolher o melhores parametros
-    Valida o modelo com esse parametro</p>
+    A busca em matriz é uma tecnica para utilizada para achar os hiperparametros corretos quando o algoritimo requer mais de um parametro.</p>
+
+<pre><code>Um exemplo de uso é em um algoritimo SVM onde temos o parametro kernel e outro gama e essa técnica nos ajuda achar que valores usar para cada parametro.
+
+Cria-se uma tabela com 3 colunas, essas colunas representam os kernels (Ex. Linear e Polinomial). Essa tabela pode ter N linhas e essas linhas representam o valores Gama. Os valores Gama devem usar valores que cresçam de forma exponencial como 0.1, 1, 10, 100, 1000 e assim por diante.
+
+Com a tabela criada, usamos o conjunto de dados de treino para treinar os modelos lineares e os polinomios com diferentes valores gama e o conjunto de validação cruzada para obter o F1 Score de cada modelo. Com isso feito, escolhemos o modelo que tem maior F1 Score e o treinamos novamente afim de validar se a escolha realmente foi correta.
+
+Podemos usar uma função do sklearn usando o trecho de código abaixo.
+
+from sklearn.model_selection import GridSearchCV  
+from sklearn.metrics 
+import make_scorer from sklearn.metrics 
+import f1_score 
+scorer = make_scorer(f1_score)</code></pre>
 
 </div>
 </div>
